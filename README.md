@@ -1,13 +1,5 @@
-    ____    _____  ______    ____            _                   ____                            __  ___   ______
-   / __ \  / ___/ /_  __/   / __ \          (_)   ____          / __ \    ____   ___    ____    /  |/  /  / ____/
-  / / / /  \__ \   / /     / /_/ /         / /   / __ \        / / / /   / __ \ / _ \  / __ \  / /|_/ /  / /     
- / /_/ /  ___/ /  / /     / _, _/         / /   / / / /       / /_/ /   / /_/ //  __/ / / / / / /  / /  / /___   
- \____/  /____/  /_/     /_/ |_|         /_/   /_/ /_/        \____/   / .___/ \___/ /_/ /_/ /_/  /_/   \____/   
-                                                                      /_/                                        
 
-============================================================================
-|                   CWMP TRIGA Reactor OpenMC Models                     |
-============================================================================
+CWMP TRIGA Reactor OpenMC Models
 
 ## Overview
 
@@ -32,7 +24,7 @@ The repository is organized into three main model directories:
   - `Pellet_Materials.py` - Material definitions including NpO₂-Al cermet composition
 
 ### **Model 3: Aqueous Model** (`Model_3/`)
-- **Target Material**: Aqueous Neptunium solution (1.0392 M Np-237 in water)
+- **Target Material**: Aqueous Neptunium solution (1.25 M Np-237 in water)
 - **Configuration**: Liquid target in the lazy susan target location
 - **Key Files**:
   - `Aqueous_Model.py` - Geometry setup for aqueous solution target
@@ -70,13 +62,7 @@ Each model can be run independently. The command-line interface is consistent ac
 
 ### Example Command
 
-===============================================================================
-|                                                                             |
-| python Model_1/Slug_Model.py -n 25000 -i 30 -a 470 -m --run --plot \    |
-|                            --rods 30 40.1 50.2 60.3 --num_threads 16  |
-|                            --dir ./output_slug                         |
-|                                                                             |
-===============================================================================
+python Model_1/Slug_Model.py -n 25000 -i 30 -a 470 -m --run --plot --rods 30 40.1 50.2 60.3 --num_threads 16 --dir ./output_slug
 
 This command runs Model 1 with:
 - **Transient Rod**: 30% withdrawn
@@ -90,13 +76,7 @@ This command runs Model 1 with:
 
 ### Default Configuration
 
-===============================================================================
-|                                                                             |
-| python Model_1/Slug_Model.py -n 25000 -i 30 -a 470 -m --run --plot \    |
-|                            --rods 70 70 70 70 --num_threads 16         |
-|                            --dir ./output_slug                         |
-|                                                                             |
-===============================================================================
+python Model_1/Slug_Model.py -n 25000 -i 30 -a 470 -m --run --plot --rods 70 70 70 70 --num_threads 16 --dir ./output_slug                         
 
 This is the standard baseline configuration with all control rods at 70% withdrawn.
 
