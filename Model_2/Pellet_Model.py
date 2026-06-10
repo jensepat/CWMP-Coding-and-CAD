@@ -8,7 +8,7 @@ from openmc import stats
 from openmc.model import RightCircularCylinder as RCC
 import openmc.deplete
 
-openmc.config['chain_file'] = '/nfs/stak/users/bichselc/Paul TRIGA/pellet/chain_casl_pwr.xml'
+openmc.config['chain_file'] = '/nfs/stak/users/bichselc/Paul TRIGA/pellet/chain_casl_pwr.xml' # This will have to be editted to your files for modifications
 
 def ostr_model(n_particles, n_inactive, n_active, rod_heights, megawatt=False):
     """
