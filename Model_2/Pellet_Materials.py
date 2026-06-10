@@ -2,6 +2,8 @@ import openmc
 import os
 import numpy as np
 
+#os.environ['OPENMC_CROSS_SECTIONS'] = '/nfs/stak/users/spraguep/project/NucData/lib80x/cross_sections.xml'
+
 cmap = {}
 
 ##########################################################################################################
@@ -13,6 +15,8 @@ cmap = {}
 ############
 #   FUEL   #
 ############
+
+# 19.75% Enriched, 30 wt% Uranium, 1.07 wt% Erbium, 1.6:1 Hydrogen to Zirconium (mole ratio)
 
 fuel = openmc.Material()
 
@@ -28,13 +32,16 @@ fuel.add_s_alpha_beta('c_Zr_in_ZrH')
 fuel.set_density('g/cm3', 7.1879)
 fuel.name = 'Fuel'
 fuel.id = 9200
-fuel.depletable = False
 
 cmap[fuel] = (170, 175, 170)
+
+fuel.depletable = False
 
 ################
 #   GRAPHITE   #
 ################
+
+# Nuclear Grade Graphite (10% Porosity)
 
 graphite = openmc.Material()
 
@@ -53,6 +60,8 @@ cmap[graphite] = (60, 60, 60)
 #   ZIRCONIUM   #
 #################
 
+# Zirconium Metal
+
 zirconium = openmc.Material()
 
 zirconium.add_element('Zr', 100, 'ao')
@@ -67,6 +76,8 @@ cmap[zirconium] = (205, 205, 200)
 ##################
 #   MOLYBDENUM   #
 ##################
+
+# Molybdenum Metal
 
 molybdenum = openmc.Material()
 
@@ -83,6 +94,8 @@ cmap[molybdenum] = (150, 150, 170)
 #   BORON CARBIDE   #
 #####################
 
+# Boron Carbide Sintered Pellets (B4C)
+
 b4c = openmc.Material()
 
 b4c.add_element('B', 4, 'ao')
@@ -97,6 +110,8 @@ cmap[b4c] = (40, 40, 50)
 #############
 #   WATER   #
 #############
+
+# Water at 31°C and 1.6 atm (at roughly 20 feet deep)
 
 water = openmc.Material()
 
@@ -117,6 +132,8 @@ cmap[water] = (140, 160, 215)
 ######################
 #  6061-T6 Aluminum  #
 ######################
+
+# From "Compendium of Material Composition Data for Radiation Transport Modeling" - PNNL (2021)
 
 aluminum = openmc.Material()
 
@@ -143,6 +160,8 @@ cmap[aluminum] = (180, 180, 180)
 #  Titanium  #
 ##############
 
+# Titanium Metal
+
 titanium = openmc.Material()
 
 titanium.add_element('Ti', 100, 'ao')
@@ -157,6 +176,8 @@ cmap[titanium] = (180, 190, 180)
 #############################
 #  SAE 304 Stainless Steel  #
 #############################
+
+# From "Compendium of Material Composition Data for Radiation Transport Modeling" - PNNL (2021)
 
 steel = openmc.Material()
 
@@ -182,11 +203,16 @@ cmap[steel] = (150, 130, 130)
 #  Steel/Water Mix for Flutes   #
 #################################
 
+# From the OSTR MCNP Deck. Unsure of the exact ratios used for this mixture, but it comes from blending
+# the geometry of the flutes (made of steel) into the water that passes by them.
+
 flute_mix = openmc.Material()
 
+# Water
 flute_mix.add_element('H', 0.48777, 'ao')
 flute_mix.add_element('O', 0.04676, 'ao')
 
+# Steel
 flute_mix.add_element('Fe', 0.17925, 'ao')
 flute_mix.add_element('C', 0.00098, 'ao')
 flute_mix.add_element('Si', 0.00521, 'ao')
@@ -211,6 +237,8 @@ cmap[flute_mix] = (200, 195, 190)
 #  AIR  #
 #########
 
+# Dry Air at STP
+
 air = openmc.Material()
 
 air.add_element('C', 0.0150, 'ao')
@@ -228,6 +256,8 @@ cmap[air] = (220, 220, 220)
 #  CADMIUM  #
 #############
 
+# Cadmium Metal
+
 cadmium = openmc.Material()
 
 cadmium.add_element('Cd', 100, 'ao')
@@ -241,6 +271,8 @@ cmap[cadmium] = (180, 170, 180)
 ##########
 #  LEAD  #
 ##########
+
+# Lead Metal
 
 lead = openmc.Material()
 
@@ -269,4 +301,5 @@ npo2.set_density('g/cm3', 4.38)
 cmap[npo2] = (100, 50, 150)
 
 npo2.depletable = True
+
 npo2.volume = 108.11
