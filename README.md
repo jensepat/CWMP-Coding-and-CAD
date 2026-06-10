@@ -59,4 +59,12 @@ This will generate a model of the OSTR with the Transient Rod 30% withdrawn, Saf
 withdrawn, and the Regulating Rod 60.3% withdrawn with temperatures set to those at 1 MW (full power). This model is
 set to track 25000 particles per cycle, with 30 inactive cycles and 470 active cycles (total of 500). The input 
 files will be generated in "./folder". OpenMC will then run in that same directory using 16 threads, and plots 
-will be generated in that same directory.
+will be generated in that same directory. 
+
+Courtesy of Paul Sprague for all non modified code used in this project, including this README for general instructions. Something to note
+all code used here had all four rods at 70%, and always ran with Megawatt.
+
+ ____________________________________________________________________________________________________________________________
+|                                                                                                                            |
+| python OSTR_OpenMC_Model.py -n 25000 -i 30 -a 470 -m --run --plot --rods 70 70 70 70 --num_threads 16 --dir ./folder |
+|____________________________________________________________________________________________________________________________|
